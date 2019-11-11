@@ -1,0 +1,5 @@
+The new dispatch() method is pretty small, but is vital to our functioning store code. To briefly recap how the method functions:
+
+dispatch() is called with an Action
+the reducer that was passed to createStore() is called with the current state tree and the action...this updates the state tree
+because the state has (potentially) changed, all listener functions that have been registered with the subscribe() method are called
