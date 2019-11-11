@@ -1,14 +1,6 @@
 
-function todos(state=[],action){
-    if(action.type==='ADD_TODO'){
-        return state.concat([action.todo])
-    }
-    return state
-}//https://www.youtube.com/watch?time_continue=196&v=QU_WvPaC6cM&feature=emb_logo
-
-
-
-function createStore () {
+//library core
+function createStore() {
     // The store should have four parts
     // 1. The state
     // 2. Get the state.
@@ -16,30 +8,39 @@ function createStore () {
     // 4. Update the state
 
     let state;
-    let listeners= [];
-    
-    const getState=()=>state
-    const getListeners=()=>listeners
+    let listeners = [];
 
-    const subscribe = (listener)=>{
+    const getState = () => state
+
+    const subscribe = (listener) => {
         listeners.push(listener);
-        return()=>{
-            listeners=listeners.filter((l)=>l!==listener)
+        return () => {
+            listeners = listeners.filter((l) => l !== listener)
         }
     }
 
-    return{
+    //getnewsdtate of the app
+    const dispatch = (action) => {
+        state = todos(state, action)
+        listeners.forEach((listener) => listener)
+    }
+
+    return {
         getState,
-        getListeners,
-        subscribe
+        subscribe,
+        dispatch
     }
 
 }
 
-const store=createStore();
-x_x=01;
-store.subscribe((x_x)=>{
-    console.log("the new state is:", store.getState)
-    console.log("the new state is:", store.getListeners)
-})
+
+//app code
+function todos(state = [], action) {
+    if (action.type === 'ADD_TODO') {
+        return state.concat([action.todo])
+    }
+    return state
+}//https://www.youtube.com/watch?time_continue=196&v=QU_WvPaC6cM&feature=emb_logo
+
+
 
