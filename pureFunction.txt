@@ -1,0 +1,27 @@
+What are Pure Functions?
+Pure functions are integral to how state in Redux applications is updated. By definition, pure functions:
+
+Return the same result if the same arguments are passed in
+Depend solely on the arguments passed into them
+Do not produce side effects, such as API requests and I/O operations
+Let’s check out an example of a pure function, square():
+
+// `square()` is a pure function
+
+const square = x => x * x;
+square() is a pure function because it outputs the same value every single time, given that the same argument is passed into it. There is no dependence on any other values to produce that result, and we can safely expect just that result to be returned -- no side effects (more on this in a bit!).
+
+
+/////////////////////////////////////
+
+ example of an impure function, calculateTip():
+
+// `calculateTip()` is an impure function
+
+const tipPercentage = 0.15;
+
+const calculateTip = cost => cost * tipPercentage;
+//////////////////////////////////////
+
+Why Pure Functions Are Great
+For our purposes, the most important feature of a pure function is that it's predictable. If we have a function that takes in our state and an action that occurred, the function should (if it's pure!) return the exact same result every single time.
