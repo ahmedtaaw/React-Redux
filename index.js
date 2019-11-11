@@ -1,3 +1,13 @@
+
+function todos(state=[],action){
+    if(action.type==='ADD_TODO'){
+        return state.concat([action.todo])
+    }
+    return state
+}//https://www.youtube.com/watch?time_continue=196&v=QU_WvPaC6cM&feature=emb_logo
+
+
+
 function createStore () {
     // The store should have four parts
     // 1. The state
@@ -32,3 +42,4 @@ store.subscribe((x_x)=>{
     console.log("the new state is:", store.getState)
     console.log("the new state is:", store.getListeners)
 })
+
